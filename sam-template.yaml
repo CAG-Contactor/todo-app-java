@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-    Simple implementation of a REST API for an imaginary todo app.
+  Simple implementation of a REST API for an imaginary todo app.
 
 Globals:
   Function:
@@ -12,7 +12,7 @@ Globals:
 Parameters:
   StageName:
     Type: String
-    Default: dev
+    *Default: Ändra till ditt eget signum och ta bort asterisken!!
     Description: The Lambda Function Stage
 
 Resources:
@@ -129,7 +129,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
     Properties:
       TableName:
-        Fn::Sub: todo-app-tasks
+        Fn::Sub: todo-app-tasks-${StageName}
       PrimaryKey:
         Name: id
         Type: String

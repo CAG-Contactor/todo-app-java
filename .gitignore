@@ -10,3 +10,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 sam-template-output.yaml
+.idea
+*.iml
+*.ipr
+*.iws

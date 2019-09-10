@@ -4,14 +4,19 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-@DynamoDBTable(tableName="todo-app-tasks")
+@DynamoDBTable(tableName="todo-app-tasks-{DITT_SUFFIX}") Byt ut till ditt eget suffix!
 public class Task {
 	private String id;
 	private String title;
 	private String description;
 	private boolean done;
-	
-	@DynamoDBHashKey(attributeName="id")
+
+	public Task(String title, String descrption) {
+		this.title = title;
+		this.description = descrption;
+	}
+
+    @DynamoDBHashKey(attributeName="id")
 	public String getId() {
 		return id;
 	}
