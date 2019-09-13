@@ -5,20 +5,20 @@
 ## Prerequisites
 
 Förberedelser inför C.A.G Labb:
-                                                                                                                                          
- - skapa s3 bucket via terminalen med command: 
+
+ - skapa s3 bucket via terminalen med command:
  ```bash
  aws s3 mb s3://se.cag.{DITT_SUFFIX}
  ```                                                                                                                                                
  - ändra stage name i sam-template.yaml till {DITT_SUFFIX} se kommentar i sam-template.yaml                                                                                                                                                                                                                                                                                                                                                                           
  - ändra @DynamoDBTable(tableName="todo-app-tasks-{DITT_SUFFIX}") i com/carpinuslabs/todo/model/Task.java                                                                                         
- 
+
 ## Bygg & deploy
 
 ```bash
  mvn clean package
  aws cloudformation package --template-file sam-template.yaml --output-template-file sam-template-output.yaml --s3-bucket se.cag.{DITT_SUFFIX}
- aws cloudformation deploy --template-file sam-template-output.yaml --stack-name todo-app-{DITT_SUFFIX} --capabilities CAPABILITY_IAM
+ aws --profile ccxxxx_lambda_dev cloudformation deploy --template-file sam-template-output.yaml --stack-name todo-app-{DITT_SUFFIX} --capabilities CAPABILITY_IAM
 ```
 
 
