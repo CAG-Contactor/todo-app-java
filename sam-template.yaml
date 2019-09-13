@@ -8,7 +8,6 @@ Globals:
     Runtime: java8
     Timeout: 60
     MemorySize: 256
-    CodeUri: target/todo-app-1.0-SNAPSHOT.jar
 
 Parameters:
   StageName:
@@ -31,6 +30,7 @@ Resources:
     Properties:
       FunctionName:
         Fn::Sub: todo-app-list-tasks-${StageName}
+      CodeUri: target/todo-app-1.0-SNAPSHOT.jar
       Handler: com.carpinuslabs.todo.handler.TaskRequestHandler::listTasks
       Policies:
         DynamoDBReadPolicy:
@@ -50,6 +50,7 @@ Resources:
     Properties:
       FunctionName:
         Fn::Sub: todo-app-create-task-${StageName}
+      CodeUri: target/todo-app-1.0-SNAPSHOT.jar
       Handler: com.carpinuslabs.todo.handler.TaskRequestHandler::createTask
       Policies:
         DynamoDBCrudPolicy:
@@ -69,6 +70,7 @@ Resources:
     Properties:
       FunctionName:
         Fn::Sub: todo-app-get-task-${StageName}
+      CodeUri: target/todo-app-1.0-SNAPSHOT.jar
       Handler: com.carpinuslabs.todo.handler.TaskRequestHandler::getTask
       Policies:
         DynamoDBReadPolicy:
@@ -88,6 +90,7 @@ Resources:
     Properties:
       FunctionName:
         Fn::Sub: todo-app-update-task-${StageName}
+      CodeUri: target/todo-app-1.0-SNAPSHOT.jar
       Handler: com.carpinuslabs.todo.handler.TaskRequestHandler::updateTask
       Policies:
         DynamoDBCrudPolicy:
@@ -107,6 +110,7 @@ Resources:
     Properties:
       FunctionName:
         Fn::Sub: todo-app-delete-task-${StageName}
+      CodeUri: target/todo-app-1.0-SNAPSHOT.jar
       Handler: com.carpinuslabs.todo.handler.TaskRequestHandler::deleteTask
       Policies:
         DynamoDBCrudPolicy:
